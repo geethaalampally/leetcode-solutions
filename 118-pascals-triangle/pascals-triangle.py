@@ -1,23 +1,22 @@
 
+
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
 
-        def ncr(n, r):
-            res = 1
-            for i in range(r):
-                res = res * (n - i)
-                res = res / (i + 1)
-            return int(res)
+        def generateRow(row):
+            res = [1]
+            val = 1
+
+            for c in range(1, row):
+                val = val * (row - c)
+                val = val // c
+                res.append(val)
+
+            return res
 
         ans = []
 
-        for row in range(1, numRows + 1):
-            temp = []
-
-            for col in range(1, row + 1):
-                val = ncr(row - 1, col - 1)
-                temp.append(val)
-
-            ans.append(temp)
+        for i in range(1, numRows + 1):
+            ans.append(generateRow(i))
 
         return ans
