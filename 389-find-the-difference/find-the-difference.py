@@ -9,7 +9,17 @@ class Solution:
         # diff=val2-val1
         # return chr(diff)
 
-        for char in t:
-            if s.count(char)!=t.count(char):
-                return char
+        # for char in t:
+        #     if s.count(char)!=t.count(char):
+        #         return char
+
+        xor = 0
+
+        for ch in s:
+            xor ^= ord(ch)
+
+        for ch in t:
+            xor ^= ord(ch)
+
+        return chr(xor)
         
